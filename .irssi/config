@@ -1,0 +1,115 @@
+servers = (
+  {
+    address = "irc.oftc.net";
+    chatnet = "OFTC";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
+  }
+  {
+    address = "irc.freenode.net";
+    chatnet = "Freenode";
+    port = "7000";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = {
+  OFTC = {
+    type = "IRC";
+    nick = "bluezd";
+    autosendcmd = "/msg nickserv identify PASSWORD;wait 2000";
+  };
+  Freenode = {
+    type = "IRC";
+    nick = "bluezd";
+    autosendcmd = "/msg nickserv identify PASSWORD;wait 2000";
+  };
+
+};
+
+channels = (
+  { name = "#kernelnewbies"; chatnet = "OFTC"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#ubuntu-cn"; chatnet = "Freenode"; autojoin = "yes"; }
+  { name = "#fedora-zh"; chatnet = "Freenode"; autojoin = "yes"; }
+);
+
+settings = {
+  core = {
+    real_name = "Dong Zhu";
+    user_name = "bluezd";
+    nick = "bluezd";
+    quit_message = "Leaving ...";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "perl/core/scripts" = { nicklist_automode = "screen"; };
+  "fe-common/core" = {
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
+    beep_when_away = "no";
+  };
+};
+
+aliases = {
+  C = "window close";
+  J = "join";
+  M = "msg";
+  N = "nick";
+  Q = "quit";
+  T = "topic";
+  W = "whois";
+};
+
+keyboard = (
+  { key = "^F"; id = "command"; data = "nicklist scroll +10"; },
+  { key = "^B"; id = "command"; data = "nicklist scroll -10"; }
+);
+
+hilights = ( { text = "bluezd"; nick = "yes"; word = "yes"; } );
+
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#kernelnewbies";
+        tag = "OFTC";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#fedora-zh";
+        tag = "Freenode";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#archlinux";
+        tag = "Freenode";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#ubuntu-cn";
+        tag = "Freenode";
+      }
+    );
+  };
+};
