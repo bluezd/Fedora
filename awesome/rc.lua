@@ -9,7 +9,8 @@ require("naughty")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.getdir("config") .. "/theme.lua")
+-- beautiful.init(awful.util.getdir("config") .. "/theme.lua")
+beautiful.init("~/.config/awesome/themes/wombat/theme.lua")
 
 -- Private naughty config
 naughty.config.default_preset.font             = "sans 13.5"
