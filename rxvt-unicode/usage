@@ -1,3 +1,6 @@
+#install
+yum install rxvt-unicode 
+
 rxvt-unicode
 
 xrdb .Xdefaults
