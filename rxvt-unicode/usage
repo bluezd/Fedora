@@ -4,3 +4,6 @@ yum install rxvt-unicode
 rxvt-unicode
 
 xrdb .Xdefaults
+
+add terminal = "urxvt" to the rc.lua
+

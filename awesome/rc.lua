@@ -20,7 +20,8 @@ naughty.config.default_preset.bg               = beautiful.bg_focus
 naughty.config.default_preset.border_color     = beautiful.border_focus
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+-- terminal = "xterm"
+terminal = "urxvt"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
