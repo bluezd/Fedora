@@ -58,11 +58,12 @@ settings = {
 aliases = {
   C = "window close";
   J = "join";
-  M = "msg";
+  M = "query";
   N = "nick";
   Q = "quit";
   T = "topic";
   W = "whois";
+  P = "part";
 };
 
 keyboard = (
