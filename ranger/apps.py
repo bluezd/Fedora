@@ -61,12 +61,14 @@ class CustomApplications(Applications):
                         if f.extension in ('pdf', ):
                                 c.flags += 'd'
                                 return self.either(c, 'evince')
+                        if f.extension in ('html', 'htm', 'xhtml', 'swf'):
+                                c.flags += 'd'
+                                return self.either(c, 'firefox')
+                        if f.extension in ('ppt', 'odp', 'xlsx', 'docx'):
+                                c.flags += 'd'
+                                return self.either(c, 'libreoffice')
                         if f.extension in ('xml', ):
                                 return self.app_editor(c)
-                        if f.extension in ('html', 'htm', 'xhtml'):
-                                return self.app_editor(c)
-                        if f.extension in ('swf', ):
-                                return self.either(c, 'firefox')
                         if f.extension == 'nes':
                                 return self.app_fceux(c)
                         if f.extension in ('swc', 'smc'):
