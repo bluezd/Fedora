@@ -1,0 +1,13 @@
+# Place this file in your /etc/yum.repos.d/ directory
+
+[fedora-awesome]
+name=awesome window manager, xcb enabled cairo
+baseurl=http://repos.fedorapeople.org/repos/thm/awesome/fedora-$releasever/$basearch/
+enabled=1
+gpgcheck=0
+
+[fedora-awesome-source]
+name=awesome window manager, xcb enabled cairo - Source
+baseurl=http://repos.fedorapeople.org/repos/thm/awesome/fedora-$releasever/SRPMS/
+enabled=0
+gpgcheck=0
