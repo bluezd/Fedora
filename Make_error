@@ -1,0 +1,9 @@
+#make clean    --> the root of the source code
+Makefile:1443: *** mixed implicit and normal rules.  Stop.
+
+solution:
+modify the Makefile
+-#/ %/: prepare scripts FORCE
++%/: prepare scripts FORCE
+
+reason : Maybe the make tool is so new ......
