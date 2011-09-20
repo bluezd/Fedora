@@ -1,0 +1,16 @@
+megs: 512
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+vga: extension=vbe
+#floppya: 1_44=a.img, status=inserted
+#floppyb: 1_44=b.img, status=inserted
+#ata0-master: type=disk, path=2G_Linux.img, cylinders=306, heads=4, spt=17
+#ata0-master: type=disk, path="2G_Linux.img", mode=flat, cylinders=4161, heads=16, spt=63
+#ata0-master: type=disk, path="Linux.img", mode=flat, cylinders=4161, heads=16, spt=63
+ata0-slave: type=cdrom, path="/home/zhudong/ISO/rhel-server-5.6-i386-dvd.iso", status=inserted
+boot: cdrom
+#boot: disk
+log: bochsout.txt
+mouse: enabled=0
+cpu: count=1,ips=15000000
+vga_update_interval: 150000
