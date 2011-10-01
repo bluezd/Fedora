@@ -83,4 +83,4 @@ Total ${totaldown eth0} ${alignr}Total ${totalup eth0}
 
 ${color white}WEATHER ${hr 1}${color}
 
-${execi 1800 /home/johan/Scripts/weather.sh SWXX0006}
+${execi 1800 /home/zhudong/Scripts/weather.sh SWXX0006}

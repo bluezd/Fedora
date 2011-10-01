@@ -1,0 +1,58 @@
+#background
+background yes
+
+#avoid flicker
+double_buffer yes
+override_utf8_locale yes
+
+#own window to run simultanious 2 or more conkys
+own_window yes
+own_window_transparent yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+#size
+
+
+#borders
+#draw_borders yes
+#border_margin 0
+
+#shades
+draw_shades yes
+#draw_outline no
+
+#position
+gap_y 3
+alignment top_middle
+
+#behaviour
+update_interval 1.0
+
+#colour
+default_color  8f8f8f
+
+#own_window_colour 272521
+
+#font
+use_xft yes
+#override_utf8_locale yes
+xftfont DejaVu Sans:pixelsize=11.5
+
+color1 666666
+color2 cc2222
+color3 444444
+
+mpd_host 127.0.0.1
+
+TEXT
+#${color white}内核版本:${kernel}
+#${color white}启动时间:${uptime_short}
+#${color white}登入用户:${user_number}
+#${color white}有线下载速度:${downspeed eth0}K
+#${color white}有线上传速度:${upspeed eth0}K
+#CPU: ${color e0e0e0}${cpu cpu0}%,${cpu cpu1}%${color} | MEM: ${color e0e0e0}$mem / $memmax${color} | UPTIME: ${color e0e0e0}${uptime_short}${color} bluezd ...
+#${color white}KERNEL:${kernel}   CPU: ${color e0e0e0}${cpu cpu0}%,${cpu cpu1}%${color} | MEM: ${color e0e0e0}$mem / $memmax${color} | TEMP: ${color e0e0e0}${hwmon temp 1}°C${color} | UPTIME: ${color e0e0e0}${uptime_short}${color} | NET: ${color e0e0e0}${downspeed eth0} + ${downspeed wlan0}↓ ${color} | BAT: ${color e0e0e0}${battery}${battery_bar 8,90 BAT0}${color}
+${color blue}CPU: ${color} ${color2}${cpu}% ${cpubar cpu0 5,50}${color} ${color green}CPU1${color} ${cpubar cpu1 5,50} ${color green}CPU2${color} ${cpubar cpu2 5,50} ${color} | ${color green}RAM:${color} ${color2}${memperc}% ${membar 5,50}${color}  | TEMP: ${color e0e0e0}${hwmon temp 1}°C${color} | UPTIME: ${color e0e0e0}${uptime_short}${color} | NET: ${color e0e0e0}${downspeed eth0} + ${downspeed wlan0}↓ ${color} | BAT: ${color e0e0e0}${battery}${battery_bar 8,50 BAT0}${color}  | MPD:${color e0e0e0}${color cc2222} $mpd_status $mpd_elapsed/$mpd_length ${color}${scroll 35 5 ${mpd_smart}}${color}
+#${color green}Beijing Weather of${execi 7200 ~/.conky/weather.sh Time} ${color} Sky:${execi 7200 ~/.conky/weather.sh Sky} Temperature:${execi 7200 ~/.conky/weather.sh Temperature}
+#${color green}MPD:${color} MPD Status:${color #cc2222} $mpd_status $mpd_elapsed/$mpd_length ${color} Artist:${color #cc2222} $mpd_artist - $mpd_title $color  Process:${color #88aadd} $mpd_percent% $mpd_bar $color Volume:${color #cc2222} $mpd_vol
