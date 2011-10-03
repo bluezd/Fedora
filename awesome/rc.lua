@@ -101,8 +101,8 @@ apptags =
 
 -- {{{ Wibox
 
-separator = widget({ type = "textbox" })
-separator.text  = " | "
+separator = widget({ type = "imagebox" })
+separator.image = image(beautiful.widget_sep)
 
 dnicon = widget({ type = "imagebox" })
 upicon = widget({ type = "imagebox" })

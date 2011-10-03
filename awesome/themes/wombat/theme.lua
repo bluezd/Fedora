@@ -93,6 +93,14 @@ theme.titlebar_bg_normal = "#3F3F3F"
 --theme.bg_widget        = "#494B4F"
 --theme.border_widget    = "#3F3F3F"
 -- }}}
+theme.widget_net = "/home/zhudong/.config/awesome/icons/down.png"
+theme.widget_netup = "/home/zhudong/.config/awesome/icons/up.png"
+theme.widget_cpu = "/home/zhudong/.config/awesome/icons/cpu.png"
+theme.widget_date = "/home/zhudong/.config/awesome/icons/time.png"
+theme.widget_mem = "/home/zhudong/.config/awesome/icons/mem.png"
+theme.widget_mpd = "/home/zhudong/.config/awesome/icons/music.png"
+theme.widget_sep = "/home/zhudong/.config/awesome/icons/separator.png"
+theme.widget_vol = "/home/zhudong/.config/awesome/icons/vol.png"
 
 -- {{{ Mouse finder
 theme.mouse_finder_color = "#CC9393"
