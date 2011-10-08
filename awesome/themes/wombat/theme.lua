@@ -101,6 +101,7 @@ theme.widget_mem = "/home/zhudong/.config/awesome/icons/mem.png"
 theme.widget_mpd = "/home/zhudong/.config/awesome/icons/music.png"
 theme.widget_sep = "/home/zhudong/.config/awesome/icons/separator.png"
 theme.widget_vol = "/home/zhudong/.config/awesome/icons/vol.png"
+theme.widget_cloud = "/home/zhudong/.config/awesome/icons/sun.png"
 
 -- {{{ Mouse finder
 theme.mouse_finder_color = "#CC9393"
