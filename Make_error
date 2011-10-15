@@ -1,9 +1,32 @@
 #make clean    --> the root of the source code
-Makefile:1443: *** mixed implicit and normal rules.  Stop.
+(1) Makefile:1443: *** mixed implicit and normal rules.  Stop.
 
 solution:
 modify the Makefile
 -#/ %/: prepare scripts FORCE
 +%/: prepare scripts FORCE
+
+(2) Makefile:415: *** mixed implicit and normal rules.  Stop.
+solution:
+-config %config: scripts_basic outputmakefile FORCE
++%config: scripts_basic outputmakefile FORCE
+
+  LD      arch/x86/mm/built-in.o
+  LDS     arch/x86/vdso/vdso32/vdso32.lds
+  AS      arch/x86/vdso/vdso32/note.o
+  AS      arch/x86/vdso/vdso32/int80.o
+  VDSO    arch/x86/vdso/vdso32-int80.so.dbg
+gcc: error: elf_i386: No such file or directory
+make[2]: *** [arch/x86/vdso/vdso32-int80.so.dbg] Error 1
+make[1]: *** [arch/x86/vdso] Error 2
+make: *** [arch/x86] Error 2
+
+The problem is that gcc 4.6 doesn't support anymore linker-style architecture options.  
+
+solution:
+In arch/x86/vdso/Makefile :
+replace "-m elf_x86_64" by "-m64" on the line starting with  VDSO_LDFLAGS_vdso.lds
+replace "-m elf_x86" by "-m32" on the line starting with  VDSO_LDFLAGS_vdso32.lds
+
 
 reason : Maybe the make tool is so new ......
