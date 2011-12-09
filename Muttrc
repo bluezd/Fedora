@@ -26,6 +26,17 @@ mailboxes =INBOX \
 	=foo \
 	=bar
 
+bind index \CP sidebar-prev
+bind index \CN sidebar-next
+bind index \CO sidebar-open
+bind pager \CP sidebar-prev
+bind pager \CN sidebar-next
+bind pager \CO sidebar-open
+
+# b toggles sidebar visibility
+macro index b 'toggle sidebar_visible'
+macro pager b 'toggle sidebar_visible'
+
 # No record
 #unset record
 
@@ -42,7 +53,7 @@ set postponed="+Drafts"
 set record = "+sent"
 
 # Message cache
-set header_cache=~/.mutt/cache/header
+#set header_cache=~/.mutt/cache/header
 
 # Set sendmail
 set sendmail="/usr/bin/msmtp"
