@@ -25,4 +25,4 @@ remoteuser = bluezhudong@gmail.com
 remotepass =
 nametrans = lambda foldername: re.sub('^\[Gmail\]/', '', foldername)
 folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail',
-	     '[Gmail]/Drafts', '[Gmail]/Spam','[Gmail]/Trash']
+             '[Gmail]/Important', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Spam','[Gmail]/Trash']

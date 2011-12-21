@@ -35,7 +35,9 @@ set record = "+sent"
 #set folder="~/Mail/mailboxes"
 
 mailboxes =All\ Mail \
-        =sent \
+        =Important \
+	=Sent\ Mail \
+        =Drafts \
         =Trash
 
 bind index \CP sidebar-prev
@@ -48,6 +50,7 @@ bind pager \CO sidebar-open
 # b toggles sidebar visibility
 macro index b 'toggle sidebar_visible'
 macro pager b 'toggle sidebar_visible'
+macro index gk "!/usr/bin/offlineimap -o -u quiet\n" "Checking mails......"
 
 # No record
 #unset record
