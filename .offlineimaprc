@@ -24,5 +24,6 @@ remoteuser = bluezhudong@gmail.com
 #remotepassfile = ~/.mutt/passwd
 remotepass =
 nametrans = lambda foldername: re.sub('^\[Gmail\]/', '', foldername)
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail',
-             '[Gmail]/Important', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Spam','[Gmail]/Trash']
+#folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail',
+#             '[Gmail]/Important', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Spam','[Gmail]/Trash']
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']

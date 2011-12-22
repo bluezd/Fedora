@@ -34,8 +34,11 @@ set record = "+sent"
 
 #set folder="~/Mail/mailboxes"
 
-mailboxes =All\ Mail \
-        =Important \
+#mailboxes =All\ Mail \
+
+mailboxes =INBOX \
+        =zhudong \
+	=kernel \
 	=Sent\ Mail \
         =Drafts \
         =Trash
