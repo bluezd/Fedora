@@ -198,6 +198,10 @@ nnoremap to :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
 
+" Conque plugin
+nnoremap tt :ConqueTermVSplit bash<CR>
+
+
 " Move among windows
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
