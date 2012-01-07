@@ -40,6 +40,22 @@ set sessionoptions-=curdir
 " Keep more backups for one file
 autocmd BufWritePre * let &backupext = strftime(".%m-%d-%H-%M")
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Status
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set laststatus=2
+
+function! CurDir()
+        let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+        return curdir
+endfunction
+
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 """"""""""""""""""""""""""""""""""""""""""""""""""
