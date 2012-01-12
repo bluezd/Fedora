@@ -198,6 +198,12 @@ nnoremap to :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
 
+nnoremap vv :vsplit<CR>
+nnoremap ss :split<CR>
+nnoremap vn :vertical new<CR>
+
+map <C-m> :tabedit
+
 " Conque plugin
 nnoremap tt :ConqueTermVSplit bash<CR>
 
