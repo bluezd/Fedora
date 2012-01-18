@@ -26,4 +26,5 @@ remotepass =
 nametrans = lambda foldername: re.sub('^\[Gmail\]/', '', foldername)
 #folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail',
 #             '[Gmail]/Important', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Spam','[Gmail]/Trash']
-folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+#folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail', '[Gmail]/kernel', '[Gmail]/Work', '[Gmail]/Travel', '[Gmail]/Starred', '[Gmail]/Important', '[Gmail]/Personal']
