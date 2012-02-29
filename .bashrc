@@ -24,16 +24,41 @@ normal=$'\[\e[m\]'
 
 #PS1="$magenta[$blue\u$white:$green\T$white:$cyan\w$yellow\$git_branch$magenta]$white\$ $normal"
 
-PS1="$red[\[\033[1;32m\]\u\[\033[1;33m\]:\[\033[1;36m\]\t \[\033[1;35m\]\w\[\033[0m\]$red]$normal\$ "
+#PS1="$red[\[\033[1;32m\]\u\[\033[1;33m\]:\[\033[1;36m\]\t \[\033[1;35m\]\w\[\033[0m\]$red]$normal\$ "
 
-if [ $color_prompt=yes ]; then
+#if [ $color_prompt=yes ]; then
 #PS1='\n\[\e[1;31m\][\w]\[\e[0m\] \[\e[1;35m\][ \[\e[1;36m\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\e[1;35m\]]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "\[\e[01;36;41m\]{$a}"; fi`\[\e[01;36m\][\t \u]\[\e[00m\] \[\e[01;34m\]\W`[[ -d .git ]] && echo -ne "\[\e[33;40m\](branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))\[\e[01;32m\]\[\e[00m\]"`\[\e[01;34m\] \$ \[\e[00m\]'
-        PS1='\[\e[1;31m\][\w]\[\e[0m\] \[\e[1;35m\][ \[\e[1;36m\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\e[1;35m\]]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "\[\e[01;36;41m\]{$a}"; fi`\[\e[01;36m\][\t \u]\[\e[00m\] \[\e[01;34m\]\W`[[ -d .git ]] && echo -ne "\[\e[33;40m\](branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))\[\e[01;32m\]\[\e[00m\]"`\[\e[01;34m\] \$ \[\e[00m\]'
+#        PS1='\[\e[1;31m\][\w]\[\e[0m\] \[\e[1;35m\][ \[\e[1;36m\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\e[1;35m\]]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "\[\e[01;36;41m\]{$a}"; fi`\[\e[01;36m\][\t \u]\[\e[00m\] \[\e[01;34m\]\W`[[ -d .git ]] && echo -ne "\[\e[33;40m\](branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))\[\e[01;32m\]\[\e[00m\]"`\[\e[01;34m\] \$ \[\e[00m\]'
 
-else
-        PS1='\n[\w] [ $(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b ]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "{$a}"; fi`[\t \u] \W`[[ -d .git ]] && echo -ne "(branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))"` \$ '
-fi
-unset color_prompt
+#else
+#        PS1='\n[\w] [ $(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b ]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "{$a}"; fi`[\t \u] \W`[[ -d .git ]] && echo -ne "(branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))"` \$ '
+#fi
+#unset color_prompt
+
+#screen and xterm's dynamic title
+case $TERM in
+    rxvt-unicode*)
+        # Set xterm's title
+        #TITLEBAR='\[\e]0;\u@\h:\w\a\]'
+        #PS1="${TITLEBAR}${PS1}"
+        if [ $color_prompt=yes ]; then
+                PS1='\[\e[1;31m\][\w]\[\e[0m\] \[\e[1;35m\][ \[\e[1;36m\]$(ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\e[1;35m\]]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "\[\e[01;36;41m\]{$a}"; fi`\[\e[01;36m\][\t \u]\[\e[00m\] \[\e[01;34m\]\W`[[ -d .git ]] && echo -ne "\[\e[33;40m\](branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))\[\e[01;32m\]\[\e[00m\]"`\[\e[01;34m\] \$ \[\e[00m\]'  
+        else   
+                PS1='\n[\w] [ $(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b ]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "{$a}"; fi`[\t \u] \W`[[ -d .git ]] && echo -ne "(branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))"` \$ '
+        fi
+        unset color_prompt
+        ;;
+    screen*)
+        # Use path as title
+        PATHTITLE='\[\ek\W\e\\\]'
+        # Use program name as title
+        PROGRAMTITLE='\[\ek\e\\\]'
+        PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+        ;;
+    *)
+        ;;
+esac
+
 
 export LESS_TERMCAP_mb=$'\E[05;34m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;36m'       # begin bold
