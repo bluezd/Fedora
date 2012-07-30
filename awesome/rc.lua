@@ -446,6 +446,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "i", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, }, "m", function () awful.util.spawn("amixer -q sset Master toggle") end),
     awful.key({ modkey, }, "p", function () awful.util.spawn("pidgin") end),
+    awful.key({ modkey, }, "f", function () awful.util.spawn("nautilus") end),
     awful.key({ modkey, }, "s", function () awful.util.spawn("xlock -mode blank -dpmsoff 5 -font -misc-fixed-*-*-*-*-20-*-*-*-*-*-*") end),
     awful.key({ modkey, }, "t", function () awful.util.spawn("mpc toggle") end),
     awful.key({ modkey, }, "l", function () awful.util.spawn("stardict") end),
