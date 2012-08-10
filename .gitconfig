@@ -1,0 +1,17 @@
+[user]
+	name = Dong Zhu
+	email = dzhu@redhat.com
+[color]
+        branch = auto
+        diff   = auto
+        grep   = auto
+        status = auto
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[format]
+	signoff = true
+[github]
+        user = bluezd
+        token = 7c8b723c7502d431fbfeda350703b40b
+[core]
+	autocrlf = input
