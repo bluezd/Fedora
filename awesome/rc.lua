@@ -126,8 +126,8 @@ volicon.image = image(beautiful.widget_vol)
 
 baticon = widget({ type = "imagebox" })
 baticon.image = image(beautiful.widget_bat)
---weathericon = widget({ type = "imagebox" })
-----weathericon.image = image(beautiful.widget_cloud)
+weathericon = widget({ type = "imagebox" })
+weathericon.image = image(beautiful.widget_cloud)
 mailicon = widget({ type = "imagebox" })
 mailicon.image = image(beautiful.widget_mail)
 
@@ -280,7 +280,15 @@ mytextclock = awful.widget.textclock({ align = "right" }, " %a %b %d, %H:%M ", 1
 -- Initialize widget
 --mystatusbar = awful.wibox({ position = "top", screen = 1, ontop = true, width = 1, height = 20 })
 
---
+-- Weather
+weatherwidget = widget({ type = "textbox" })
+weather_t = awful.tooltip({ objects = { weatherwidget },})
+vicious.register(weatherwidget, vicious.widgets.weather,
+        function (widget, args)
+            weather_t:set_text("City: " .. args["{city}"] .."\nWind: " .. args["{windmph}"] .. " mp/h " .. args["{wind}"] .. "\nSky: " .. args["{sky}"] .. "\nHumidity: " .. args["{humid}"] .. "%") 
+            return args["{tempc}"] .. "°C"
+        end, 180, "ZBAA")
+
 -- {{{ Widgets configuration
 
 -- Create a systray
@@ -377,6 +385,7 @@ for s = 1, screen.count() do
 --        separator,volbar,volicon,
 --        datewidget,dateicon,
 --          separator,weather,weathericon,
+          separator,weatherwidget,weathericon,
 --          separator,volwidget,volicon,
           separator,batwidget,baticon,
           separator,mailwidget,mailicon,
