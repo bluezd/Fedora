@@ -126,12 +126,15 @@ volicon.image = image(beautiful.widget_vol)
 
 baticon = widget({ type = "imagebox" })
 baticon.image = image(beautiful.widget_bat)
+
 weathericon = widget({ type = "imagebox" })
 weathericon.image = image(beautiful.widget_cloud)
+
 mailicon = widget({ type = "imagebox" })
 mailicon.image = image(beautiful.widget_mail)
 
-
+diskicon = widget({ type = "imagebox" })
+diskicon.image = image(beautiful.widget_disk)
 
 --  CPU usage widget
 -- Initialize widget
@@ -277,6 +280,10 @@ vicious.register(mailwidget, vicious.widgets.mdir, 'Mail $1', 5, { '/home/bluezd
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" }, " %a %b %d, %H:%M ", 1)
 
+-- Calendar widget to attach to the textclock
+require('calendar2')
+calendar2.addCalendarToWidget(mytextclock)
+
 -- Initialize widget
 --mystatusbar = awful.wibox({ position = "top", screen = 1, ontop = true, width = 1, height = 20 })
 
@@ -288,6 +295,13 @@ vicious.register(weatherwidget, vicious.widgets.weather,
             weather_t:set_text("City: " .. args["{city}"] .."\nWind: " .. args["{windmph}"] .. " mp/h " .. args["{wind}"] .. "\nSky: " .. args["{sky}"] .. "\nHumidity: " .. args["{humid}"] .. "%") 
             return args["{tempc}"] .. "°C"
         end, 180, "ZBAA")
+
+-- Disk usage widget
+disk = require("diskusage")
+-- the first argument is the widget to trigger the diskusage
+-- the second/third is the percentage at which a line gets orange/red
+-- true = show only local filesystems
+disk.addToWidget(diskicon, 75, 90, false)
 
 -- {{{ Widgets configuration
 

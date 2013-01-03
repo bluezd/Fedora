@@ -102,6 +102,12 @@ theme.widget_mpd = "/home/zhudong/.config/awesome/icons/music.png"
 theme.widget_sep = "/home/zhudong/.config/awesome/icons/separator.png"
 theme.widget_vol = "/home/zhudong/.config/awesome/icons/vol.png"
 theme.widget_cloud = "/home/zhudong/.config/awesome/icons/sun.png"
+theme.widget_io = "/home/zhudong/.config/awesome/icons/disk.png"
+theme.widget_bat = "/home/zhudong/.config/awesome/icons/bat.png"
+theme.widget_mail = "/home/zhudong/.config/awesome/icons/mail.png"
+theme.widget_gmail = "/home/zhudong/.config/awesome/icons/mail.png"
+theme.widget_disk = "/home/zhudong/.config/awesome/icons/disk.png"
+
 
 -- {{{ Mouse finder
 theme.mouse_finder_color = "#CC9393"
