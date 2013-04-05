@@ -1,0 +1,158 @@
+-- wombat (matching the vim colorscheme), awesome3 theme, by zhuravlik
+
+--{{{ Main
+require("awful.util")
+
+theme = {}
+
+home          = os.getenv("HOME")
+config        = awful.util.getdir("config")
+shared        = "/usr/share/awesome"
+if not awful.util.file_readable(shared .. "/icons/awesome16.png") then
+    shared    = "/usr/share/local/awesome"
+end
+sharedicons   = shared .. "/icons"
+sharedthemes  = shared .. "/themes"
+themes        = config .. "/themes"
+themename     = "/stears"
+if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
+       themes = sharedthemes
+end
+themedir      = themes .. themename
+
+wallpaper1    = themedir .. "/1366x768.jpg"
+
+if awful.util.file_readable(wallpaper1) then
+	theme.wallpaper_cmd = { "awsetbg " .. wallpaper1 }
+end
+
+if awful.util.file_readable(config .. "/vain/init.lua") then
+    theme.useless_gap_width  = "3"
+end
+--}}}
+
+-- {{{ Styles
+-- theme.font      = "sans 8"
+theme.font          = "anorexia 8"
+
+theme.bg_normal     = "#050608"
+theme.bg_focus      = "#050608"
+theme.bg_urgent     = "#A9D7F2"
+theme.bg_minimize   = "#050608"
+
+theme.fg_normal     = "#B1917A"
+theme.fg_focus      = "#A9D7F2"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#B1917A"
+
+theme.border_width  = "1" 
+theme.border_normal = "#050608"
+theme.border_focus  = "#A8D8EF"
+theme.border_marked = "#FBDE8E"
+
+theme.bg_widget        = "#333333"
+theme.fg_widget        = "#908884"
+theme.fg_center_widget = "#636363"
+theme.fg_end_widget    = "#ffffff"
+theme.fg_off_widget    = "#22211f"
+
+theme.awesome_icon = "/home/bluezd/.config/awesome/themes/stears/awesome14-dust.png"
+
+theme.widget_disk     = "/home/bluezd/.config/awesome/themes/stears/icons/stears/disk.png"
+theme.widget_ac       = "/home/bluezd/.config/awesome/themes/stears/icons/stears/ac.png"
+theme.widget_acblink  = "/home/bluezd/.config/awesome/themes/stears/icons/stears/acblink.png"
+theme.widget_blank    = "/home/bluezd/.config/awesome/themes/stears/icons/stears/blank.png"
+theme.widget_batfull  = "/home/bluezd/.config/awesome/themes/stears/icons/stears/batfull.png"
+theme.widget_batmed   = "/home/bluezd/.config/awesome/themes/stears/icons/stears/batmed.png"
+theme.widget_batlow   = "/home/bluezd/.config/awesome/themes/stears/icons/stears/batlow.png"
+theme.widget_batempty = "/home/bluezd/.config/awesome/themes/stears/icons/stears/batempty.png"
+theme.widget_vol      = "/home/bluezd/.config/awesome/themes/stears/icons/stears/vol.png"
+theme.widget_mute     = "/home/bluezd/.config/awesome/themes/stears/icons/stears/mute.png"
+theme.widget_pac      = "/home/bluezd/.config/awesome/themes/stears/icons/stears/pac.png"
+theme.widget_pacnew   = "/home/bluezd/.config/awesome/themes/stears/icons/stears/pacnew.png"
+theme.widget_mail     = "/home/bluezd/.config/awesome/themes/stears/icons/stears/mail.png"
+theme.widget_mailnew  = "/home/bluezd/.config/awesome/themes/stears/icons/stears/mailnew.png"
+theme.widget_temp     = "/home/bluezd/.config/awesome/themes/stears/icons/stears/temp.png"
+theme.widget_tempwarm = "/home/bluezd/.config/awesome/themes/stears/icons/stears12/tempwarm.png"
+theme.widget_temphot  = "/home/bluezd/.config/awesome/themes/stears/icons/stears/temphot.png"
+theme.widget_wifi     = "/home/bluezd/.config/awesome/themes/stears/icons/stears/wifi.png"
+theme.widget_nowifi   = "/home/bluezd/.config/awesome/themes/stears/icons/stears/nowifi.png"
+theme.widget_mpd      = "/home/bluezd/.config/awesome/themes/stears/icons/stears/note.png"
+theme.widget_play     = "/home/bluezd/.config/awesome/themes/stears/icons/stears/play.png"
+theme.widget_pause    = "/home/bluezd/.config/awesome/themes/stears/icons/stears/pause.png"
+theme.widget_ram      = "/home/bluezd/.config/awesome/themes/stears/icons/stears/ram.png"
+theme.widget_cpu      = "/home/bluezd/.config/awesome/themes/stears/icons/stears/cpu.png"
+theme.widget_mem      = "/home/bluezd/.config/awesome/themes/stears/icons/stears12/ram.png"
+theme.widget_swap     = "/home/bluezd/.config/awesome/themes/stears/icons/stears12/swap.png"
+theme.widget_fs       = "/home/bluezd/.config/awesome/themes/stears/icons/stears/fs.png"
+theme.widget_fs2      = "/home/bluezd/.config/awesome/themes/stears/icons/stears12/fs_02.png"
+theme.widget_up       = "/home/bluezd/.config/awesome/themes/stears/icons/stears12/up.png"
+theme.widget_down     = "/home/bluezd/.config/awesome/themes/stears/icons/stears12/down.png"
+
+-- {{{ Mouse finder
+theme.mouse_finder_color = "#CC9393"
+-- mouse_finder_[timeout|animate_timeout|radius|factor]
+-- }}}
+
+-- {{{ Menu
+-- Variables set for theming the menu:
+-- menu_[bg|fg]_[normal|focus]
+-- menu_[border_color|border_width]
+theme.menu_height = "15"
+theme.menu_width  = "130"
+-- }}}
+
+-- {{{ Icons
+-- {{{ Taglist
+theme.taglist_squares_sel   = sharedthemes .. "/zenburn/taglist/squarefz.png"
+theme.taglist_squares_unsel = sharedthemes .. "/zenburn/taglist/squarez.png"
+--theme.taglist_squares_resize = "false"
+-- }}}
+
+-- {{{ Misc
+theme.awesome_icon           = themedir .. "/awesome-icon.png"
+theme.menu_submenu_icon      = sharedthemes .. "/default/submenu.png"
+theme.tasklist_floating_icon = sharedthemes .. "/default/tasklist/floatingw.png"
+-- }}}
+
+-- {{{ Layout
+theme.layout_tile       = themedir .. "/layouts/tile.png"
+theme.layout_tileleft   = themedir .. "/layouts/tileleft.png"
+theme.layout_tilebottom = themedir .. "/layouts/tilebottom.png"
+theme.layout_tiletop    = themedir .. "/layouts/tiletop.png"
+theme.layout_fairv      = themedir .. "/layouts/fairv.png"
+theme.layout_fairh      = themedir .. "/layouts/fairh.png"
+theme.layout_spiral     = themedir .. "/layouts/spiral.png"
+theme.layout_dwindle    = themedir .. "/layouts/dwindle.png"
+theme.layout_max        = themedir .. "/layouts/max.png"
+theme.layout_fullscreen = themedir .. "/layouts/fullscreen.png"
+theme.layout_magnifier  = themedir .. "/layouts/magnifier.png"
+theme.layout_floating   = themedir .. "/layouts/floating.png"
+-- }}}
+
+-- {{{ Titlebar
+theme.titlebar_close_button_focus  = sharedthemes .. "/zenburn/titlebar/close_focus.png"
+theme.titlebar_close_button_normal = sharedthemes .. "/zenburn/titlebar/close_normal.png"
+
+theme.titlebar_ontop_button_focus_active  = sharedthemes .. "/zenburn/titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_active = sharedthemes .. "/zenburn/titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_inactive  = sharedthemes .. "/zenburn/titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_inactive = sharedthemes .. "/zenburn/titlebar/ontop_normal_inactive.png"
+
+theme.titlebar_sticky_button_focus_active  = sharedthemes .. "/zenburn/titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_active = sharedthemes .. "/zenburn/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_inactive  = sharedthemes .. "/zenburn/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_inactive = sharedthemes .. "/zenburn/titlebar/sticky_normal_inactive.png"
+
+theme.titlebar_floating_button_focus_active  = sharedthemes .. "/zenburn/titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_active = sharedthemes .. "/zenburn/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_inactive  = sharedthemes .. "/zenburn/titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_inactive = sharedthemes .. "/zenburn/titlebar/floating_normal_inactive.png"
+
+theme.titlebar_maximized_button_focus_active  = sharedthemes .. "/zenburn/titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_active = sharedthemes .. "/zenburn/titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_inactive  = sharedthemes .. "/zenburn/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_inactive = sharedthemes .. "/zenburn/titlebar/maximized_normal_inactive.png"
+-- }}}
+
+return theme
