@@ -1,6 +1,6 @@
 [user]
 	name = Dong Zhu
-	email = dzhu@redhat.com
+	email = bluezhudong@gmail.com
 [color]
         branch = auto
         diff   = auto
@@ -15,3 +15,9 @@
         token = 7c8b723c7502d431fbfeda350703b40b
 [core]
 	autocrlf = input
+	editor = vim
+[sendemail]
+        smtpencryption = tls
+        smtpserver = smtp.gmail.com
+        smtpuser = bluezhudong@gmail.com
+        smtpserverport = 587
