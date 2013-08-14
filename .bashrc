@@ -26,13 +26,15 @@ normal=$'\[\e[m\]'
 
 #PS1="$red[\[\033[1;32m\]\u\[\033[1;33m\]:\[\033[1;36m\]\t \[\033[1;35m\]\w\[\033[0m\]$red]$normal\$ "
 
-#if [ $color_prompt=yes ]; then
+if [ $color_prompt=yes ]; then
 #PS1='\n\[\e[1;31m\][\w]\[\e[0m\] \[\e[1;35m\][ \[\e[1;36m\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\e[1;35m\]]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "\[\e[01;36;41m\]{$a}"; fi`\[\e[01;36m\][\t \u]\[\e[00m\] \[\e[01;34m\]\W`[[ -d .git ]] && echo -ne "\[\e[33;40m\](branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))\[\e[01;32m\]\[\e[00m\]"`\[\e[01;34m\] \$ \[\e[00m\]'
 #        PS1='\[\e[1;31m\][\w]\[\e[0m\] \[\e[1;35m\][ \[\e[1;36m\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\e[1;35m\]]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "\[\e[01;36;41m\]{$a}"; fi`\[\e[01;36m\][\t \u]\[\e[00m\] \[\e[01;34m\]\W`[[ -d .git ]] && echo -ne "\[\e[33;40m\](branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))\[\e[01;32m\]\[\e[00m\]"`\[\e[01;34m\] \$ \[\e[00m\]'
+         PS1="\[\033[0;37m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[0;31m\]\h'; else echo '\[\033[0;33m\]\u\[\033[0;37m\]'; fi)\[\033[0;37m\]]\342\224\200[\[\033[0;32m\] $(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files \[\e[1;33m\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b\[\e[0m\] \[\033[0;37m\]]\n\342\224\224\342\224\200\342\224\200\342\225\274 \[\e[01;34m\]\w\[\e[01;34m\] \[\033[0;35m\]\$ \[\033[00m\]"
 
-#else
+else
 #        PS1='\n[\w] [ $(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b ]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "{$a}"; fi`[\t \u] \W`[[ -d .git ]] && echo -ne "(branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))"` \$ '
-#fi
+         PS1='\n[\w] [ $(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g") files $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")b ]\n`a=$?;if [ $a -ne 0 ]; then echo -ne "{$a}"; fi`[\t \u] \W`[[ -d .git ]] && echo -ne "(branch:$(git branch | sed -e "/^ /d" -e "s/* \(.*\)/\1/"))"` \$ '
+fi
 #unset color_prompt
 
 #screen and xterm's dynamic title
