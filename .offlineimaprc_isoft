@@ -1,0 +1,33 @@
+# Offlineimap config file
+
+[general]
+#ui = Quiet
+accounts = iSoft
+maxsyncaccounts = 1
+
+[Account iSoft]
+quick = 5
+autorefresh = 1
+localrepository = iSoft-Local
+remoterepository = iSoft-Remote
+
+[Repository iSoft-Local]
+type = Maildir
+localfolders = ~/Documents/Mails/iSoft
+nametrans = lambda foldername: ('&UXZO1mWHTvZZOQ-' + '.' + foldername) if (foldername not in ['INBOX', 'Sent Messages', 'Drafts', 'Trash', 'Spam', 'Junk', 'Deleted Messages']) else foldername
+
+[Repository iSoft-Remote]
+type = IMAP 
+keepalive = 30
+realdelete = yes
+holdconnectionopen = yes
+remotehost = imap.exmail.qq.com 
+#remoteport = 993 
+remoteuser = dong.zhu@i-soft.com.cn 
+remotepassfile = ~/.mutt/passwd
+sslcacertfile = /etc/ssl/certs/ca-bundle.crt 
+#remotepass = 
+nametrans = lambda foldername: re.sub('^&UXZO1mWHTvZZOQ-.', '', foldername)
+#folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail',
+#	     '[Gmail]/Drafts', '[Gmail]/Spam','[Gmail]/Trash']
+#folderfilter = lambda foldername: foldername in ['zhudong']
