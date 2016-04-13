@@ -38,6 +38,8 @@ set nocompatible
 
 " Auto change current directory
 " set autochdir
+" clipboard
+set clipboard=unnamed
 
 " Use absolute paths in sessions
 set sessionoptions-=curdir
@@ -65,6 +67,7 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
 " Set colorscheme
 colorscheme desert
+" colorscheme lilypink
 " colorscheme molokai
 
 " Enable syntax highlight
@@ -213,7 +216,7 @@ noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-n> <C-W>n
 
-map <C-m> :tabedit 
+map mm :tabedit 
 
 nnoremap vv :vsplit<CR>
 nnoremap ss :split<CR>
@@ -230,6 +233,14 @@ nnoremap vn :vertical new<CR> map <C-m> :tabedit
 " nnoremap <C-\>e :scs find e <C-R>=expand("<cword>")<CR><CR>
 " nnoremap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 " nnoremap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+map <F12> :q!<CR>
+map <F2> :cs find g <C-R>=expand("<cword>")<CR><CR>
+map <F3> :scs find g <C-R>=expand("<cword>")<CR><CR>
+map <F4> :scs find s <C-R>=expand("<cword>")<CR><CR>
+map <F5> :cs find c <C-R>=expand("<cword>")<CR><CR>
+map <F6> :cs find t <C-R>=expand("<cword>")<CR><CR>
+map <F7> :cs find e <C-R>=expand("<cword>")<CR><CR>
+map <F8> :cs find f <C-R>=expand("<cfile>")<CR><CR>
 
 " Set Up and Down non-linewise
 noremap <Up> gk
@@ -239,27 +250,32 @@ noremap <Down> gj
 nnoremap <silent> <F6> :TlistToggle<CR>:TlistUpdate<CR>
 
 " Grep search tools
-nnoremap <F9> :Rgrep<CR>
+" nnoremap <F9> :Rgrep<CR>
 
 " Paste toggle
 "set pastetoggle=<F4>
 
 " Save & Make 
-"nnoremap <F5> :w<CR>:make!<CR>
-"nnoremap <F6> :w<CR>:make! %< CC=gcc CFLAGS="-Wall -g -O2"<CR>:!./%<<CR>
-
+" nnoremap <F10> :w<CR>:make!<CR>
+" nnoremap <F9> :w<CR>:make! %< CC=gcc CFLAGS="-Wall -g -O2 -pthread -lrt"<CR>:!./%<<CR>
+nnoremap <F9> :w<CR>:make! %< CC=gcc CFLAGS="-Wall -g -O2 -pthread -lrt"<CR>
+ 
 " Quickfix window
 nnoremap <silent> <F7> :botright copen<CR>
 nnoremap <silent> <F8> :cclose<CR>
+
+" autocmd QuickFixCmdPost [^l]* nested copen
+autocmd QuickFixCmdPost [^l]* nested cwindow 
+autocmd QuickFixCmdPost    l* nested lwindow 
 
 " NERDTreeToggle
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
 
 " Toggle display line number
 nnoremap <silent> <F11> :set number!<CR>
-" nnoremap <silent> <F10> :set relativenumber!<CR>
-nnoremap <silent> <F9> :set cursorcolumn!<CR>
-nnoremap <F10> :NumbersToggle<CR>
+nnoremap <silent> <F10> :set relativenumber!<CR>
+" nnoremap <silent> <F9> :set cursorcolumn!<CR>
+" nnoremap <F10> :NumbersToggle<CR>
 
 " Use <space> to toggle fold
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
@@ -267,9 +283,13 @@ nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " Use xsel to access the X clipboard
 if $DISPLAY != '' && executable('xsel')
 	nnoremap <silent> "*y :'[,']w !xsel -i -p -l /dev/null<CR>
+	nnoremap <silent> ch :'[,']w !xsel -i -p -l /dev/null<CR>
 	nnoremap <silent> "*p :r!xsel -p<CR>
+	nnoremap <silent> cl :r!xsel -p<CR>
 	nnoremap <silent> "+y :'[,']w !xsel -i -b -l /dev/null<CR>
+	nnoremap <silent> cj :'[,']w !xsel -i -b -l /dev/null<CR>
 	nnoremap <silent> "+p :r!xsel -b<CR>
+	nnoremap <silent> ck :r!xsel -b<CR>
 endif
 
 " Google translate
@@ -280,37 +300,61 @@ endif
 let VIMPRESS = [{'username':'zhudong',
                 \'blog_url':'http://www.bluezd.info'
                 \}]
+" Powerline
+" let g:Powerline_symbols = 'fancy'
 
 " EasyMotion
 let g:EasyMotion_leader_key = '<Leader>'
 
-" Vundle
+" vim movement
+nnoremap <PageUp>  mz:m-2<cr>`z==
+nnoremap <PageDown>  mz:m+<cr>`z==
+xnoremap <PageUp>  :m'<-2<cr>gv=gv
+xnoremap <PageDown>  :m'>+<cr>gv=gv
 
+  " add empty line
+noremap <silent> sl O<ESC>jo<ESC>k
+
+" Vundle
+set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion' 
-Bundle 'Markdown'
-Bundle 'VimRepress'
-Bundle 'Google-Translate'
-"Bundle 'hallison/vim-markdown' 
-"Bundle 'tpope/vim-markdown' 
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-easymotion' 
+" Plugin 'Markdown'
+Plugin 'VimRepress'
+Plugin 'Google-Translate'
+"Plugin 'hallison/vim-markdown' 
+"Plugin 'tpope/vim-markdown' 
 
-Bundle 'Align'
-Bundle 'autoload_cscope.vim'
-Bundle 'bufexplorer.zip'
-Bundle 'ctrlp.vim'
-Bundle 'DrawIt'
-Bundle 'grep.vim'
-Bundle 'Indent-Guides'
-Bundle 'matchit.zip'
-Bundle 'snipMate'
-Bundle 'Tagbar'
-Bundle 'The-NERD-tree'
-Bundle "myusuf3/numbers.vim"
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
+Plugin 'fcitx.vim'
+Plugin 'Align'
+Plugin 'autoload_cscope.vim'
+Plugin 'bufexplorer.zip'
+Plugin 'ctrlp.vim'
+Plugin 'DrawIt'
+Plugin 'grep.vim'
+Plugin 'Indent-Guides'
+Plugin 'matchit.zip'
+Plugin 'snipMate'
+Plugin 'Tagbar'
+Plugin 'The-NERD-tree'
+"Plugin "myusuf3/numbers.vim"
+Plugin 'calendar.vim'
+"Plugin 'Indent-Guides'
+
+Plugin 'vim-gitgutter'
+"Plugin 'vim-linemovement'
+
+Plugin 'vimwiki'
+
+call vundle#end()
 filetype plugin indent on
